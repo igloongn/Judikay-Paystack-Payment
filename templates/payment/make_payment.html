@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Make Payment</title>
+</head>
+<body>
+<br><br><br><br><br>
+<center><h2>You are definitely Ready to Pay cash now</h2></center>
+<center><h2>Email: {{email}} </h2></center>
+<center><h2>Amount: {{amount}} </h2></center>
+<!-- <center><h2>Ref: {{ref}} </h2></center> -->
+<!-- <center><h2>PaystackAmount: {{paystackAmount}} </h2></center> -->
+<center><input type="button" id ='makePayment' value ='Make Payment' class="btn btn-success"></center>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script> 
+<script>
+    var paymentForm = document.getElementById('makePayment');
+    paymentForm.addEventListener('click', payWithPaystack);
+    function payWithPaystack() {
+    var handler = PaystackPop.setup({
+        key: '{{publicKey}}', // Replace with your public key
+        email: '{{email}}',
+        amount: '{{paystackAmount}}',
+        currency: 'NGN', // Use GHS for Ghana Cedis or USD for US Dollars
+
+        // ref: (new Date()).getTime().toString(),
+
+        ref: '{{ref}}', // Replace with a reference you generated
+
+        callback: response => {
+            //this happens after the payment is completed successfully
+            var reference = response.reference;
+            alert('Payment complete! Reference: ' + reference);
+            // Make an AJAX call to your server with the reference to verify the transaction
+        },
+        onClose: () => alert('Transaction was not completed, window closed.')
+    });
+    handler.openIframe();
+}
+</script>
+</body>
+</html>

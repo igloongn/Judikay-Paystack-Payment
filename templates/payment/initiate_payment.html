@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Init</title>
+<style>
+    .container {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+</style>
+</head>
+<body>
+
+    <div class="container">
+
+        <center><h2>Initiate Payment</h2></center>
+        <br><br><br><br><br><br>
+        <div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label> Email of User</label>
+                    <input type="text" name="email" value="Judikay@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label> Amount</label>
+                    <input type="text" name="amount" value="1000">
+                </div>                
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Initiate Payment">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <all>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    </all>
+</body>
+</html>
